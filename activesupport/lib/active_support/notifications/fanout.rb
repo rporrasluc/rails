@@ -398,7 +398,7 @@ module ActiveSupport
             if @can_publish_event
               @delegate.publish_event event
             else
-              publish(event.name, event.time, event.end, event.transaction_id, event.payload)
+              publish(event.name, (event.time / 1_000.0).round(6), (event.end / 1_000.0).round(6), event.transaction_id, event.payload)
             end
           end
 
